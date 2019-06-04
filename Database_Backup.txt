@@ -1,0 +1,164 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 04, 2019 at 05:23 PM
+-- Server version: 5.7.19
+-- PHP Version: 7.1.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `emoneydr_main_base`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `analytics`
+--
+
+DROP TABLE IF EXISTS `analytics`;
+CREATE TABLE IF NOT EXISTS `analytics` (
+  `intime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `outtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(18) DEFAULT NULL,
+  `country` varchar(20) DEFAULT NULL,
+  `city` tinytext,
+  `region` tinytext,
+  `zip` smallint(6) DEFAULT NULL,
+  `sess_duration` time DEFAULT NULL,
+  `countrycode` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_msgs`
+--
+
+DROP TABLE IF EXISTS `contact_msgs`;
+CREATE TABLE IF NOT EXISTS `contact_msgs` (
+  `name` varchar(25) NOT NULL,
+  `phone` int(12) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `msg` text NOT NULL,
+  `time` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_us`
+--
+
+DROP TABLE IF EXISTS `contact_us`;
+CREATE TABLE IF NOT EXISTS `contact_us` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_email` text NOT NULL,
+  `message` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` text NOT NULL,
+  `phone` varchar(13) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fiverr_form`
+--
+
+DROP TABLE IF EXISTS `fiverr_form`;
+CREATE TABLE IF NOT EXISTS `fiverr_form` (
+  `reference` varchar(7) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `payment_method` varchar(9) NOT NULL,
+  `reg_date` date NOT NULL,
+  `gigid` varchar(5) NOT NULL,
+  `rev_link` text NOT NULL,
+  `profile` text NOT NULL,
+  PRIMARY KEY (`reference`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `links`
+--
+
+DROP TABLE IF EXISTS `links`;
+CREATE TABLE IF NOT EXISTS `links` (
+  `id` varchar(10) NOT NULL,
+  `url` text NOT NULL,
+  `descrpition` text,
+  `name` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `link_clicks`
+--
+
+DROP TABLE IF EXISTS `link_clicks`;
+CREATE TABLE IF NOT EXISTS `link_clicks` (
+  `id` varchar(10) NOT NULL,
+  `country` varchar(15) NOT NULL,
+  `isp` text NOT NULL,
+  `province` varchar(30) NOT NULL,
+  `date` timestamp NOT NULL,
+  `city` varchar(15) NOT NULL,
+  `ip` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE IF NOT EXISTS `post` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `timestamp` timestamp NULL DEFAULT NULL,
+  `keywords` text,
+  `imgpath` text,
+  `views` int(10) DEFAULT NULL,
+  `post_path` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscribers`
+--
+
+DROP TABLE IF EXISTS `subscribers`;
+CREATE TABLE IF NOT EXISTS `subscribers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` int(11) NOT NULL,
+  `timestamp` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
