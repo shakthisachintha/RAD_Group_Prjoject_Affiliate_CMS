@@ -1,15 +1,15 @@
 <div class="bg-dark border-right" id="sidebar-wrapper">
 	<div class="text-success sidebar-heading">Admin Panel </div>
 	<div class="list-group list-group-flush">
-		<a href="links" class="list-group-item text-primary list-group-item-action bg-dark">Link Clicks</a>
-		<a href="contact" class="list-group-item text-primary list-group-item-action bg-dark">Contact Messages</a>
-		<a href="pageviews" class="list-group-item text-primary list-group-item-action bg-dark">Pageviews</a>
-		<a href="ebates" class="list-group-item text-primary list-group-item-action bg-dark">Ebates Form</a>
-		<a href="profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
-		<a href="newpost" class="list-group-item text-primary list-group-item-action bg-dark">New Post</a>
-		<a href="mailnew" class="list-group-item text-primary list-group-item-action bg-dark">Send Mails</a>
-		<a href="#" class="list-group-item text-primary list-group-item-action bg-black">View Mails</a>
-		<a href="maildraft" class="list-group-item text-primary list-group-item-action bg-dark">Draft Mails</a>
+		<a href="/admin/links" class="list-group-item text-primary list-group-item-action bg-dark">Link Clicks</a>
+		<a href="/admin/contact" class="list-group-item text-primary list-group-item-action bg-dark">Contact Messages</a>
+		<a href="/admin/pageviews" class="list-group-item text-primary list-group-item-action bg-dark">Pageviews</a>
+		<a href="/admin/ebates" class="list-group-item text-primary list-group-item-action bg-dark">Ebates Form</a>
+		<a href="/admin/profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
+		<a href="/admin/newpost" class="list-group-item text-primary list-group-item-action bg-dark">New Post</a>
+		<a href="/admin/mailnew" class="list-group-item text-primary list-group-item-action bg-dark">Send Mails</a>
+		<a href="/admin/#" class="list-group-item text-primary list-group-item-action bg-black">View Mails</a>
+		<a href="/admin/maildraft" class="list-group-item text-primary list-group-item-action bg-dark">Draft Mails</a>
 	</div>
 </div>
 <!-- /#sidebar-wrapper -->

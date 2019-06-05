@@ -1,15 +1,15 @@
 <div class="bg-dark border-right" id="sidebar-wrapper">
 	<div class="text-success sidebar-heading">Admin Panel </div>
 	<div class="list-group list-group-flush">
-		<a href="links" class="list-group-item text-primary list-group-item-action bg-dark">Link Clicks</a>
-		<a href="contacts" class="list-group-item text-primary list-group-item-action bg-dark">Contact Messages</a>
-		<a href="pageviews" class="list-group-item text-primary list-group-item-action bg-dark">Pageviews</a>
-		<a href="ebates" class="list-group-item text-primary list-group-item-action bg-dark">Ebates Form</a>
-		<a href="profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
+		<a href="/admin/links" class="list-group-item text-primary list-group-item-action bg-dark">Link Clicks</a>
+		<a href="/admin/contacts" class="list-group-item text-primary list-group-item-action bg-dark">Contact Messages</a>
+		<a href="/admin/pageviews" class="list-group-item text-primary list-group-item-action bg-dark">Pageviews</a>
+		<a href="/admin/ebates" class="list-group-item text-primary list-group-item-action bg-dark">Ebates Form</a>
+		<a href="/admin/profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
 		<a href="#" class="list-group-item text-primary list-group-item-action bg-black">New Post</a>
-		<a href="mailnew" class="list-group-item text-primary list-group-item-action bg-dark">Send Mails</a>
-		<a href="mailoutbox" class="list-group-item text-primary list-group-item-action bg-dark">View Mails</a>
-		<a href="maildraft" class="list-group-item text-primary list-group-item-action bg-dark">Draft Mails</a>
+		<a href="/admin/mailnew" class="list-group-item text-primary list-group-item-action bg-dark">Send Mails</a>
+		<a href="/admin/mailoutbox" class="list-group-item text-primary list-group-item-action bg-dark">View Mails</a>
+		<a href="/admin/maildraft" class="list-group-item text-primary list-group-item-action bg-dark">Draft Mails</a>
 	</div>
 </div>
 <!-- /#sidebar-wrapper -->
@@ -23,7 +23,7 @@
 
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button> -->F
+        </button> -->
 		<h4 class="align-bottom text-success mx-auto">E-Money Dream Admin Panel</h4>
 
 	</nav>
@@ -41,7 +41,7 @@
 			</div>
 
 
-			<form id="create_post" onsubmit="submit_func();" class="p-3 border rounded border-primary m-2" method="POST" action="php/create_post.php">
+			<form id="create_post_form" class="p-3 border rounded border-primary m-2" method="POST" action="php/create_post.php">
 				<div class="form-group">
 					<label for="title">Title</label>
 					<input name="title" id="title" class="form-control" type="text">
@@ -58,14 +58,26 @@
 				</div>
 
 				<p>Choose Image </p>
-				<div class="custom-file">
+				<div class="custom-file form-group">
 					<input type="file" class="custom-file-input" id="customFile">
 					<label class="custom-file-label" for="customFile">Choose Image For The Post</label>
 				</div>
 
-				<div class="form-group">
-					<input name="desc" id="desc" class="btn rounded mt-3 btn-outline-primary" type="submit" value="Create Post">
+				<div class="mt-3 mb-2 form-group">
+					<label for="summernote">Post Content</label>
+					<div class="border bg-light border-primary">
+						<div class="" id="summernote">
+			
+						</div>
+					</div>
 				</div>
+
+				<div class="form-group">
+					<textarea id="post_content" rows="" cols=""></textarea>
+					<input class="btn rounded mt-3 btn-outline-primary" type="submit" value="Create Post">
+				</div>
+
+				<button type="button" class="btn btn-primary" onclick="show()">Show Text</button>
 
 			</form>
 		</div>
@@ -76,7 +88,37 @@
 </div>
 <!-- /#page-content-wrapper -->
 
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote();
 
+		$("#create_post_form").submit(function(e) {
+			var markupStr = $('#summernote').summernote('code');
+			markupStr = markupStr.trim();
+			$("#post_content").text(markupStr);
+			var form = $(this);
+			var url = form.attr('action');
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: form.serialize(), // serializes the form's elements.
+				success: function(data) {
+
+				}
+			});
+			e.preventDefault(); // avoid to execute the actual submit of the form.
+		});
+
+	});
+
+
+	function show() {
+		var markupStr = $('#summernote').summernote('code');
+			markupStr = markupStr.trim();
+			alert(markupStr);
+			$("#post_content").text(markupStr);
+	}
+</script>
 
 
 
