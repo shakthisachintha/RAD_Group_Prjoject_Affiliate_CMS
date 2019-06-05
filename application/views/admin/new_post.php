@@ -41,7 +41,7 @@
 			</div>
 
 
-			<form id="create_post_form" class="p-3 border rounded border-primary m-2" method="POST" action="php/create_post.php">
+			<form id="create_post_form" class="p-3 border rounded border-primary m-2" enctype="multipart/form-data" method="POST" action="/Postcontent/create">
 				<div class="form-group">
 					<label for="title">Title</label>
 					<input name="title" id="title" class="form-control" type="text">
@@ -53,31 +53,28 @@
 				</div>
 
 				<div class="form-group">
-					<label for="description">Keywords</label>
-					<input name="desc" id="desc" class="form-control" type="text" placeholder="Separate Keywords By Spaces">
+					<label for="keywords">Keywords</label>
+					<input name="keywords" id="keywords" class="form-control" type="text" placeholder="Separate Keywords By Spaces">
 				</div>
 
 				<p>Choose Image </p>
 				<div class="custom-file form-group">
-					<input type="file" class="custom-file-input" id="customFile">
+					<input type="file" class="custom-file-input" name="post_image" id="customFile">
 					<label class="custom-file-label" for="customFile">Choose Image For The Post</label>
 				</div>
 
 				<div class="mt-3 mb-2 form-group">
 					<label for="summernote">Post Content</label>
 					<div class="border bg-light border-primary">
-						<div class="" id="summernote">
-			
+						<div id="summernote">
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<textarea id="post_content" rows="" cols=""></textarea>
+					<textarea style="display:none" name="post_content" id="post_content" rows="" cols=""></textarea>
 					<input class="btn rounded mt-3 btn-outline-primary" type="submit" value="Create Post">
 				</div>
-
-				<button type="button" class="btn btn-primary" onclick="show()">Show Text</button>
 
 			</form>
 		</div>
@@ -96,37 +93,14 @@
 			var markupStr = $('#summernote').summernote('code');
 			markupStr = markupStr.trim();
 			$("#post_content").text(markupStr);
-			var form = $(this);
-			var url = form.attr('action');
-			$.ajax({
-				type: "POST",
-				url: url,
-				data: form.serialize(), // serializes the form's elements.
-				success: function(data) {
-
-				}
-			});
-			e.preventDefault(); // avoid to execute the actual submit of the form.
 		});
 
 	});
 
-
-	function show() {
-		var markupStr = $('#summernote').summernote('code');
-			markupStr = markupStr.trim();
-			alert(markupStr);
-			$("#post_content").text(markupStr);
-	}
-</script>
-
-
-
-
-<script>
 	// Add the following code if you want the name of the file appear on select
 	$(".custom-file-input").on("change", function() {
 		var fileName = $(this).val().split("\\").pop();
 		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 	});
+
 </script>
