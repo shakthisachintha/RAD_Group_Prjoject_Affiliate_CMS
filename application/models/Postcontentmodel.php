@@ -16,4 +16,25 @@ class Postcontentmodel extends CI_Model
 
         return $last_id;
     }
+
+    public function getPost(){
+        $this->db->select('imgpath,title,description,id,DATE(timestamp) as date');
+        $this->db->from('post');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function recentPost(){
+        $this->db->select('id','title','imgpath','description');
+        $this->db->order_by('timestamp', 'DESC');
+        $query = $this->db->get('post',3);
+        return $query;
+    }
+
+    public function topPost(){
+        $this->db->select('id','title','imgpath','description');
+        $this->db->order_by('views', 'DESC');
+        $query = $this->db->get('post',3);
+        return $query;
+    }
 }

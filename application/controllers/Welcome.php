@@ -30,8 +30,17 @@ class Welcome extends CI_Controller
 			$this->load->view('about/about');
 			$this->load->view('template/footer');
 		} else {
+
+			$this->load->model('Postcontentmodel','post',TRUE);
+			$allpost=$this->post->getPost();
+			$recent_post=$this->post->recentPost();
+			$top_post=$this->post->topPost();
+			$data=array(
+				'allpost'=>$allpost,
+				'recentpost'=>$recent_post,
+				'top_post'=>$top_post);
 			$this->load->view('template/header');
-			$this->load->view('home/home');
+			$this->load->view('home/home',$data);
 			$this->load->view('template/footer');
 		}
 	}
