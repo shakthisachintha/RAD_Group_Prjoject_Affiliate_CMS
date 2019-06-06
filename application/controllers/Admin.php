@@ -1,7 +1,7 @@
 <?php
 class Admin extends CI_Controller
 {
-
+     //commeted
     public function index($page = "admin")
     {
         if ($page == "admin") {
