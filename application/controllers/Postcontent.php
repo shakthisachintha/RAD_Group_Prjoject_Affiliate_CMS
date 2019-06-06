@@ -29,7 +29,7 @@ class Postcontent extends CI_Controller
         $config['width']         = 1920;
         $config['height']       = 1005;
         $this->load->library('image_lib', $config);
-        $this->image_lib->resize();
+        $this->image_lib->resize(); //Image Cropped
 
         $this->load->model('postcontentmodel','post', TRUE);
         $post_id = $this->post->savePost($title, $desc, $content, $keywords, $image_path);
