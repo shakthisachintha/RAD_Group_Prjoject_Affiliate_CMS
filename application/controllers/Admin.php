@@ -1,13 +1,14 @@
 <?php
 class Admin extends CI_Controller
 {
-
+//helllo
     public function index($page = "admin")
     {
         if ($page == "admin") {
             $this->load->view('admin/template/header');
             $this->load->view('admin/profile');
             $this->load->view('admin/template/footer');
+            //hisus
         } elseif ($page == "contacts") {
             $this->load->view('admin/template/header');
             $this->load->view('admin/contact_messages');
