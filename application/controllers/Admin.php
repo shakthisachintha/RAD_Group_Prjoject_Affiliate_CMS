@@ -1,18 +1,12 @@
 <?php
 class Admin extends CI_Controller
 {
-<<<<<<< HEAD
-//helllo
-=======
-     //commeted
->>>>>>> 696a02d9e568b3c01455c747a6fae2939c9558ff
     public function index($page = "admin")
     {
         if ($page == "admin") {
             $this->load->view('admin/template/header');
             $this->load->view('admin/profile');
             $this->load->view('admin/template/footer');
-            //hisus
         } elseif ($page == "contacts") {
             $this->load->view('admin/template/header');
             $this->load->view('admin/contact_messages');
