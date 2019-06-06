@@ -1,7 +1,11 @@
 <?php
 class Admin extends CI_Controller
 {
+<<<<<<< HEAD
 //helllo
+=======
+     //commeted
+>>>>>>> 696a02d9e568b3c01455c747a6fae2939c9558ff
     public function index($page = "admin")
     {
         if ($page == "admin") {
