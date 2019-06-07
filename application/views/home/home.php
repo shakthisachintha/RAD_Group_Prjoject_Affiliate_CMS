@@ -23,12 +23,18 @@
                         <a class="nav-link disabled" href="#">Support</a>
                     </li>
                 </ul>
-
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div style="display: inline-flex;">
-                            <a class="nav-link text-success" target="new">Login</a>
-                            <a class="nav-link text-danger" target="new">Register</a>
+                            <?php if ($this->session->userdata('logged_in')) : ?>
+                                <a href=/user/profile/<?= $this->session->userdata('userid') ?> class="text-success btn nav-link"><?= $this->session->userdata('name') ?></a>
+                                <a href=/user/logout class="text-light small btn nav-link">Logout</a>
+
+                            <?php else : ?>
+                                <a class="btn text-success nav-link" data-toggle="modal" data-target="#login_modal">Login</a>
+                                <a class="btn text-warning nav-link" data-toggle="modal" data-target="#reg_modal">Register</a>
+                            <?php endif; ?>
+
                             <a class="nav-link" target="new" href="https://www.facebook.com/EmoneyDream"><i class='fab fa-facebook-square' style='font-size:24px'></i></a>&nbsp;&nbsp;
                             <a class="nav-link" target="new" href="https://www.google.com"><i class='fab fa-google-plus-square' style='font-size:24px'></i></a>&nbsp;&nbsp;
                             <a class="nav-link" target="new" href="https://www.youtube.com/channel/UC7_87Azo57GFGBiWIkr7TvA"><i class='fab fa-youtube-square' style='font-size:24px'></i></a>&nbsp;&nbsp;
@@ -44,7 +50,16 @@
     </div>
 </div>
 
+
+
+
+
+
 <div class="ml-2 mr-2 row">
+    <?php if($allpost->num_rows()==0): ?>
+<p class="h1 font-weight-light mx-auto text-center text-primary">Sorry There Is No Post At This Moment To Show</p>
+<img src="/Images/sorry.png" class="w-50 img-fluid rounded mx-auto d-block" alt="Responsive image">
+<?php endif;?>
     <?php $count = 2 ?>
     <?php foreach ($allpost->result() as $row) : ?>
         <?php $count++ ?>
@@ -70,7 +85,7 @@
         </div>
 
     <?php endforeach; ?>
-    <?php if ($count < 3 && $count<0) {
+    <?php if ($count < 3 && $count < 0) {
         echo "<div class='col-md yes-margin'>";
         echo "<div class='container'>";
         echo "    <!-- New Post -->";
@@ -78,4 +93,3 @@
         $count++;
     } ?>
 </div>
-

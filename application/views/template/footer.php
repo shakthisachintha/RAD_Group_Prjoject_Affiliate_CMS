@@ -18,12 +18,12 @@
                         <!-- Content -->
                         <h5 class="text-uppercase">E-Money Dream</h5>
                         <p>Your Success Is Our Achievement. Our Goal Is to Reach You To The Highest.</p>
-                        <form class="form-inline">
+                        <form action="customer/subscribe" method="post" id="subs_form" class="form-inline">
                            
                             <div class="form-group mb-2">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                             </div>
-                            <button type="submit" class="btn ml-2 btn-outline-primary mb-2">Subscribe</button>
+                            <button type="submit" id="btn-submit-cntct" class="btn ml-2 btn-outline-primary mb-2">Subscribe</button>
                         </form>
                     </div>
                     <!-- Grid column -->
@@ -93,6 +93,56 @@
         </footer>
     </div>
 </div>
+
+<script>
+      $(document).ready(function() {
+          $("#subs_form").submit(function(e) {
+              var form = $(this);
+              var url = form.attr('action');
+
+              $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: form.serialize(), // serializes the form's elements.
+                  success: function(data) {
+                      if (data == "SUCCESS") {
+                            $("#btn-submit-cntct").attr('disabled', 'disabled');
+                            $("#btn-submit-cntct").removeClass('btn-outline-primary');
+                            $("#btn-submit-cntct").addClass('btn-outline-success');
+                            $("#btn-submit-cntct").text("Subscribed");
+                           suc();
+                     
+                      } else {
+                        $("#btn-submit-cntct").attr('disabled', 'disabled');
+                          error();
+
+                      }
+
+                  }
+              });
+              e.preventDefault(); // avoid to execute the actual submit of the form.
+          });
+      });
+
+
+      function error(){
+        Swal.fire(
+              'Thanks!',
+              'You Have Already Subscribed',
+              'info'
+          )
+      }
+
+      function suc() {
+          Swal.fire(
+              'Thank You!',
+              'You Have Subscribed To Our Newsletter',
+              'success'
+          )
+      }
+  </script>
+
+
 <script src="//code.tidio.co/e2s01pqejfek7akixaix0ku5dvlc4ujy.js"></script>
 </body>
 
