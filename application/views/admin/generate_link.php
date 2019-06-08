@@ -73,10 +73,10 @@
 
 			</div>
 		</div>
-
+		<h1 class="display-5 text-center text-primary">All Link Details</h1>
 		<div class="mt-4" id="data_table">
 
-			<div class="table-dark text-warning table-hover table-responsive-md">
+			<div class="p-3 m-3 border border-primary rounded text-warning table-hover table-responsive-md">
 				<table class="table">
 					<thead class="thead-light">
 						<tr>
@@ -122,7 +122,7 @@
 		var copyText = document.getElementById(id);
 		copyText.select();
 		document.execCommand("copy");
-		alert("Link Coppied To Clipboard");
+		alert("Link Tag Coppied To Clipboard");
 	}
 
 	$(document).ready(function() {

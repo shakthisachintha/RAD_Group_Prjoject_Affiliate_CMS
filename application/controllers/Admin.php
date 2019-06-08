@@ -62,9 +62,7 @@ class Admin extends CI_Controller
             $this->load->view('admin/fiver_form');
             $this->load->view('admin/template/footer');
         }elseif ($page == "login") {
-           
             $this->load->view('admin/login');
-        
         } else {
             $this->load->view('admin/template/header');
             $this->load->view('admin/profile');
