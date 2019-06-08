@@ -48,6 +48,7 @@ class Postcontent extends CI_Controller
 
         $this->load->model('postcontentmodel', 'post', TRUE);
         $post = $this->post->getPostContent($lang, $id);
+        $this->post->addView($id);
 
         $recent_post = $this->post->recentPost();
         $top_post = $this->post->topPost();

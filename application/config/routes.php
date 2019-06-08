@@ -66,6 +66,9 @@ $route['admin/newpost']     = '/admin/index/new';
 $route['admin/pageviews']   = '/admin/index/views';
 $route['admin/profile']     = '/admin/index/profile';
 $route['admin/linkgen']     = '/admin/index/linkgen';
+$route['admin/login']       = '/admin/index/login';
+$route['admin/fiver']       = '/admin/index/fiver';
+$route['admin/auth']       = '/admin/login';
 $route['admin/:any']        = '/admin/index/profile';
 
 $route['translate_uri_dashes'] = FALSE;

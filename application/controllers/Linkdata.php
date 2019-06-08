@@ -45,4 +45,40 @@ class Linkdata extends CI_Controller
             $count++;
         }
     }
+
+    public function linkGen(){
+        $url=$this->input->post('url');
+        $name=$this->input->post('linkname');
+        $desc=$this->input->post('desc');
+        $this->load->model('linkdatamodel','', TRUE);
+        $id = $this->linkdatamodel->addRecord($url,$name,$desc);
+        $link= "<a id='$id' onclick='redirect(this.id)' href='#'> Click Here </a>";
+        $myObj = new \stdClass();
+        $myObj->id =$id;
+        $myObj->link = $link;
+        $myJSON = json_encode($myObj);
+        echo $myJSON;
+    }
+
+    public function linkUpdate($id){
+        $url=$this->input->post('url');
+        $name=$this->input->post('linkname');
+        $desc=$this->input->post('desc');
+        $this->load->model('linkdatamodel','link', TRUE);
+        $this->link->update($url,$name,$desc,$id);
+        $this->load->library('user_agent');
+        $this->load->helper('url');
+        redirect($this->agent->referrer());
+        
+    }
+
+
+    public function linkDel($id){
+        $this->load->model('linkdatamodel','link', TRUE);
+        $this->link->delete($id);
+        $this->load->library('user_agent');
+        $this->load->helper('url');
+        redirect($this->agent->referrer());
+    }
+
 }

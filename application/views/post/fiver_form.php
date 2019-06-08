@@ -22,10 +22,19 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div style="display: inline-flex;">
+                            <?php if ($this->session->userdata('logged_in')) : ?>
+                                <a href=/user/profile/<?= $this->session->userdata('userid') ?> class="text-success btn nav-link"><?= $this->session->userdata('name') ?></a>
+                                <a href=/user/logout class="text-light small btn nav-link">Logout</a>
+
+                            <?php else : ?>
+                                <a class="btn text-success nav-link" data-toggle="modal" data-target="#login_modal">Login</a>
+                                <a class="btn text-warning nav-link" data-toggle="modal" data-target="#reg_modal">Register</a>
+                            <?php endif; ?>
+
                             <a class="nav-link" target="new" href="https://www.facebook.com/EmoneyDream"><i class='fab fa-facebook-square' style='font-size:24px'></i></a>&nbsp;&nbsp;
                             <a class="nav-link" target="new" href="https://www.google.com"><i class='fab fa-google-plus-square' style='font-size:24px'></i></a>&nbsp;&nbsp;
                             <a class="nav-link" target="new" href="https://www.youtube.com/channel/UC7_87Azo57GFGBiWIkr7TvA"><i class='fab fa-youtube-square' style='font-size:24px'></i></a>&nbsp;&nbsp;
-                            <a class="nav-link" target="new" href="https://blog.emoneydream.com"><i class='fab fa-blogger' style='font-size:24px'></i></a>
+                            <a class="nav-link" target="new" href="https://www.mybloglk.com"><i class='fab fa-blogger' style='font-size:24px'></i></a>
                         </div>
 
                     </li>

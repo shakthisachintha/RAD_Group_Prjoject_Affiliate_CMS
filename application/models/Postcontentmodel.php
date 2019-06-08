@@ -21,6 +21,12 @@ class Postcontentmodel extends CI_Model
         return $last_id;
     }
 
+    public function addView($id){
+        $this->db->set('views', 'views+1',FALSE);
+        $this->db->where('id', $id);
+        $this->db->update('post'); // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
+    }
+
     public function getPost(){
         $this->db->select('imgpath,lang,author,title_eng,title_sin,description,id,DATE(timestamp) as date');
         $this->db->from('post');

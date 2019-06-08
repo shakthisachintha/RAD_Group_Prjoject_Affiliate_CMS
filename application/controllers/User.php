@@ -10,7 +10,7 @@ class User extends CI_Controller
         $email    = $this->input->post('email');
 
         $this->load->model('Userdatamodel', 'user', TRUE);
-        if ($this->user->checkEmail($email)) {
+        if ($this->user->checkEmail($email,'user')) {
             echo "Email Already In Use";
         } else {
             $this->load->helper('string');
@@ -26,16 +26,15 @@ class User extends CI_Controller
 
     public function login()
     {
-
         $password = $this->input->post('password');
         $email    = $this->input->post('email');
 
         $this->load->model('Userdatamodel', 'user', TRUE);
 
-        if (!$this->user->checkEmail($email)) {
+        if (!$this->user->checkEmail($email,'user')) {
             echo "User Doesnot Exist";
         } else {
-            $pass = $this->user->getPass($email);
+            $pass = $this->user->getPass($email,'user');
             if (password_verify($password,$pass)) {
                 $data = $this->user->getData($email);
                 $newdata = array(

@@ -1,16 +1,18 @@
 <div class="bg-dark border-right" id="sidebar-wrapper">
 	<div class="text-success sidebar-heading">Admin Panel </div>
 	<div class="list-group list-group-flush">
+	<a href="/admin/profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
 		<a href="/admin/links" class="list-group-item text-primary list-group-item-action bg-dark">Link Clicks</a>
 		<a href="/admin/linkgen" class="list-group-item text-primary list-group-item-action bg-dark">Generate Link</a>
 		<a href="/admin/contacts" class="list-group-item text-primary list-group-item-action bg-dark">Contact Messages</a>
 		<a href="/admin/pageviews" class="list-group-item text-primary list-group-item-action bg-dark">Pageviews</a>
 		<a href="/admin/ebates" class="list-group-item text-primary list-group-item-action bg-dark">Ebates Form</a>
-		<a href="/admin/profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
+		<a href="/admin/fiver" class="list-group-item text-primary list-group-item-action bg-dark">Fiverr Form</a>
 		<a href="#" class="list-group-item text-primary list-group-item-action bg-black">New Post</a>
 		<a href="/admin/mailnew" class="list-group-item text-primary list-group-item-action bg-dark">Send Mails</a>
 		<a href="/admin/mailoutbox" class="list-group-item text-primary list-group-item-action bg-dark">View Mails</a>
 		<a href="/admin/maildraft" class="list-group-item text-primary list-group-item-action bg-dark">Draft Mails</a>
+		<a href="/user/logout" class="list-group-item text-warning bg-dark">Logout</a>
 	</div>
 </div>
 <!-- /#sidebar-wrapper -->
@@ -73,16 +75,16 @@
 					<label for="">Language</label>
 					<br>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline1" checked name="lang" value="eng" class="custom-control-input">
-						<label class="custom-control-label" for="customRadioInline1">English</label>
+						<input type="radio" checked name="lang" id="lang_eng" value="eng" class="custom-control-input">
+						<label class="custom-control-label" for="lang_eng">English</label>
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline2" name="lang" value="sin" class="custom-control-input">
-						<label class="custom-control-label" for="customRadioInline2">Sinhala</label>
+						<input type="radio" name="lang" value="sin" id="lang_sin" class="custom-control-input">
+						<label class="custom-control-label" for="lang_sin">Sinhala</label>
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline2" name="lang" value="both" class="custom-control-input">
-						<label class="custom-control-label" for="customRadioInline2">Both</label>
+						<input type="radio" name="lang" value="both" id="lang_both" class="custom-control-input">
+						<label class="custom-control-label" for="lang_both">Both</label>
 					</div>
 				</div>
 
@@ -101,7 +103,7 @@
 
 				<div class="form-group">
 					<label for="author">Author</label>
-					<input name="author" id="author" class="form-control" type="text" readonly value="<?= "Shakthi" ?>" placeholder="Separate Keywords By Commas">
+					<input name="author" id="author" class="form-control" type="text" readonly value="<?=$this->session->userdata('nickname') ?>" placeholder="Separate Keywords By Commas">
 				</div>
 
 

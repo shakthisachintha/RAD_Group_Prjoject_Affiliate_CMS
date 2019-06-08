@@ -1,3 +1,12 @@
+<?php if (!$this->session->userdata('admin_logged_in'))
+{
+  $this->load->helper('url');
+    header('Location: /admin/login');
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,3 +168,4 @@ $(document).ready(function(){
 });
   
   </script>
+

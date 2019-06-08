@@ -6,8 +6,8 @@
 		<a href="/admin/linkgen" class="list-group-item text-primary list-group-item-action bg-dark">Generate Link</a>
 		<a href="/admin/contacts" class="list-group-item text-primary list-group-item-action bg-dark">Contact Messages</a>
 		<a href="/admin/pageviews" class="list-group-item text-primary list-group-item-action bg-dark">Pageviews</a>
-		<a href="#" class="list-group-item text-primary list-group-item-action bg-black">Ebates Form</a>
-		<a href="/admin/fiver" class="list-group-item text-primary list-group-item-action bg-dark">Fiverr Form</a>
+		<a href="/admin/ebates" class="list-group-item text-primary list-group-item-action bg-dark">Ebates Form</a>
+		<a href="#" class="list-group-item text-primary list-group-item-action bg-black">Fiverr Form</a>
 		<a href="/admin/newpost" class="list-group-item text-primary list-group-item-action bg-dark">New Post</a>
 		<a href="/admin/mailnew" class="list-group-item text-primary list-group-item-action bg-dark">Send Mails</a>
 		<a href="/admin/mailoutbox" class="list-group-item text-primary list-group-item-action bg-dark">View Mails</a>
@@ -30,7 +30,7 @@
 	</nav>
 
 	<div id="main_content" class="container-fluid">
-		<h1 class="display-4 text-secondary">Ebates Cash Back Forms</h1>
+		<h1 class="display-4 text-secondary">Fiverr Review Forms</h1>
 
 		<!-- content goes here -->
 
