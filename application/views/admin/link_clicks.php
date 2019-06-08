@@ -142,6 +142,7 @@
 	<div class="text-success sidebar-heading">Admin Panel </div>
 	<div class="list-group list-group-flush">
 		<a href="#" class="list-group-item text-primary list-group-item-action bg-black">Link Clicks</a>
+		<a href="/admin/linkgen" class="list-group-item text-primary list-group-item-action bg-dark">Generate Link</a>
 		<a href="/admin/contacts" class="list-group-item text-primary list-group-item-action bg-dark">Contact
 			Messages</a>
 		<a href="/admin/pageviews" class="list-group-item text-primary list-group-item-action bg-dark">Pageviews</a>

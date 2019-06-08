@@ -43,11 +43,17 @@ class Admin extends CI_Controller
             $this->load->view('admin/template/header');
             $this->load->view('admin/link_clicks');
             $this->load->view('admin/template/footer');
+        }elseif ($page == "linkgen") {
+            $this->load->view('admin/template/header');
+            $this->load->view('admin/generate_link');
+            $this->load->view('admin/template/footer');
         } else {
             $this->load->view('admin/template/header');
             $this->load->view('admin/profile');
             $this->load->view('admin/template/footer');
         }
     }
+
+    
 
 }

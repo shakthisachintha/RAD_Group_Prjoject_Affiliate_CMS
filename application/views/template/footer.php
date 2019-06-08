@@ -18,7 +18,7 @@
                         <!-- Content -->
                         <h5 class="text-uppercase">E-Money Dream</h5>
                         <p>Your Success Is Our Achievement. Our Goal Is to Reach You To The Highest.</p>
-                        <form action="customer/subscribe" method="post" id="subs_form" class="form-inline">
+                        <form action="/customer/subscribe" method="post" id="subs_form" class="form-inline">
                            
                             <div class="form-group mb-2">
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Email">

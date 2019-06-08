@@ -28,14 +28,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Welcome To E Money Dream. We Provide You Best Online Money Earning Methods/Solutions.
-Free IQ Option / Binary Option Trading Signals, Trading Insurance Online Money Earning Methods, Micro Jobs, Work From Home Jobs Etc.
-All Methods Are In Sinhala And English." />
-    <meta name="keywords" content="online,income,opportunities,earn,money,sinhala,make,fast,how to,free,e money,sites,english,ebates,binary,trading,signal,signals,forex,iq option,offer">
+    <meta name="description" content="<?=$row->description?>" />
+    <meta name="keywords" content="<?=$row->keywords?>">
     <link rel="canonical" href="https://www.emoneydream.com" />
 
     <!-- Site Details -->
-    <title>E-Money Dream Online Earning Solutions</title>
+    <title><?=$row->title?></title>
+    
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="/Images/favicon.png" />
 

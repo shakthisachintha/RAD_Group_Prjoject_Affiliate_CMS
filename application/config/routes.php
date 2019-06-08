@@ -52,19 +52,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 
-$route['contact'] = 'welcome/index/contact';
-$route['about'] = 'welcome/index/about';
+$route['contact']           = '/welcome/index/contact';
+$route['about']             = '/welcome/index/about';
 
-$route['admin'] = 'admin/index/admin';
-$route['admin/contacts'] = 'admin/index/contacts';
-$route['admin/ebates'] = 'admin/index/ebatesform';
-$route['admin/links'] = 'admin/index/links';
-$route['admin/maildraft'] = 'admin/index/mail_draft';
-$route['admin/mailoutbox'] = 'admin/index/mail_outbox';
-$route['admin/mailnew'] = 'admin/index/mail_send';
-$route['admin/newpost'] = 'admin/index/new';
-$route['admin/pageviews'] = 'admin/index/views';
-$route['admin/profile'] = 'admin/index/profile';
-$route['admin/:any'] = 'admin/index/profile';
+$route['admin']             = '/admin/index/admin';
+$route['admin/contacts']    = '/admin/index/contacts';
+$route['admin/ebates']      = '/admin/index/ebatesform';
+$route['admin/links']       = '/admin/index/links';
+$route['admin/maildraft']   = '/admin/index/mail_draft';
+$route['admin/mailoutbox']  = '/admin/index/mail_outbox';
+$route['admin/mailnew']     = '/admin/index/mail_send';
+$route['admin/newpost']     = '/admin/index/new';
+$route['admin/pageviews']   = '/admin/index/views';
+$route['admin/profile']     = '/admin/index/profile';
+$route['admin/linkgen']     = '/admin/index/linkgen';
+$route['admin/:any']        = '/admin/index/profile';
 
 $route['translate_uri_dashes'] = FALSE;

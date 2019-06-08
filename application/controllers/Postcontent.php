@@ -4,10 +4,15 @@ class Postcontent extends CI_Controller
 {
     public function create()
     {
-        $title = $this->input->post('title');
+        $title_sin = $this->input->post('title_sin');
+        $title_eng = $this->input->post('title_eng');
         $desc = $this->input->post('desc');
         $keywords = $this->input->post('keywords');
-        $content = $this->input->post('post_content');
+        $publish = $this->input->post('publish');
+        $lang = $this->input->post('lang');
+        $author = $this->input->post('author');//this should be the name of the logged in admin
+        $content_eng = $this->input->post('post_content_eng');
+        $content_sin = $this->input->post('post_content_sin');
 
         $config['upload_path'] = './post_images/';
         $config['allowed_types'] = 'gif|jpg|png|svg';
@@ -20,10 +25,10 @@ class Postcontent extends CI_Controller
         $this->upload->do_upload('post_image');
         $error=$this->upload->display_errors('<p>', '</p>');
         $file_name= $this->upload->data('file_name');
-        $image_path='./post_images/'.$file_name;
+        $image_path='/post_images/'.$file_name;
 
         $config['image_library'] = 'gd2';
-        $config['source_image'] = './post_images/'.$file_name;
+        $config['source_image'] = '/post_images/'.$file_name;
         $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = FALSE;
         $config['width']         = 1920;
@@ -32,9 +37,33 @@ class Postcontent extends CI_Controller
         $this->image_lib->resize(); //Image Cropped
 
         $this->load->model('postcontentmodel','post', TRUE);
-        $post_id = $this->post->savePost($title, $desc, $content, $keywords, $image_path);
-        echo "Post Title : ".$title." Created Success. <br>ID : ".$post_id;
+        $post_id = $this->post->savePost($title_eng,$title_sin, $desc,$content_eng,$content_sin,$keywords, $image_path,$publish,$author,$lang);
+        echo "Post Title : ".$title_eng."/".$title_sin."<br> Created Success. <br>ID : ".$post_id;
         echo $error;
         echo "<br><a href='/admin/newpost'>Back</a>";
     }
+
+    public function view($lang,$id){
+        $this->load->model('postcontentmodel','post', TRUE);
+        $post = $this->post->getPostContent($lang,$id);
+
+        $recent_post=$this->post->recentPost();
+		$top_post=$this->post->topPost();
+
+        $data=array(
+            'row'=>$post
+        );
+
+        $maindata=array(
+            'row'=>$post,
+            'recentpost'=>$recent_post,
+            'top_post'=>$top_post
+        );
+
+        $this->load->view('post/header',$data);
+        $this->load->view('post/body',$maindata);
+        $this->load->view('template/footer');
+    }
+
+
 }
