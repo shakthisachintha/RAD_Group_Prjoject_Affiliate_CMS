@@ -16,7 +16,7 @@ class Customermodel extends CI_Model
         }
     }
 
-    private function checkEmail($email)
+    public function checkEmail($email)
     {
         $this->db->select('email');
         $this->db->where('email', $email);
@@ -43,4 +43,37 @@ class Customermodel extends CI_Model
         }
         
     }
+
+    public function fiverFormLog($Name,$Email,$Phone,$Pay,$Pay_Det,$Gigid,$Prof_link,$Date,$Gig_link){
+        $data=array(
+            'name'=>$Name,
+            'email'=>$Email,
+            'phone'=>$Phone,
+            'payment_method'=>$Pay,
+            'payment_details'=>$Pay_Det,
+            'gigid'=>$Gigid,
+            'profile'=>$Prof_link,
+            'reg_date'=>$Date,
+            'rev_link'=>$Gig_link,
+        );
+
+        if($this->db->insert('fiverr_form',$data)){
+            return $this->db->insert_id();
+        }
+    }
+
+    public function ebatesFormLog($Name,$Email,$Phone,$Pay,$Pay_Det){
+        $data=array(
+            'name'=>$Name,
+            'email'=>$Email,
+            'phone'=>$Phone,
+            'pay_method'=>$Pay,
+            'pay_details'=>$Pay_Det,
+        );
+
+        if($this->db->insert('ebates_form',$data)){
+            return $this->db->insert_id();
+        }
+    }
+    
 }

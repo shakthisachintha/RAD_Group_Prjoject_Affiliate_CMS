@@ -2,7 +2,7 @@
 	<div class="col">
 		<!-- Navigation Pane -->
 		<nav class="navbar navbar-expand-md navbar-dark elegant-color-dark shadow-lg mb-4">
-			<a class="navbar-brand" href="https://www.emoneydream.com"><img src="Images/favicon.png" style="width:20px;"
+			<a class="navbar-brand" href="/index.php"><img src="Images/favicon.png" style="width:20px;"
 					alt="E-Money Dream">&nbsp;E-Money
 				Dream</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

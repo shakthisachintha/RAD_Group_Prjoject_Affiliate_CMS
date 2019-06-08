@@ -10,7 +10,7 @@ class Postcontent extends CI_Controller
         $keywords = $this->input->post('keywords');
         $publish = $this->input->post('publish');
         $lang = $this->input->post('lang');
-        $author = $this->input->post('author');//this should be the name of the logged in admin
+        $author = $this->input->post('author'); //this should be the name of the logged in admin
         $content_eng = $this->input->post('post_content_eng');
         $content_sin = $this->input->post('post_content_sin');
 
@@ -23,12 +23,12 @@ class Postcontent extends CI_Controller
 
         $this->load->library('upload', $config);
         $this->upload->do_upload('post_image');
-        $error=$this->upload->display_errors('<p>', '</p>');
-        $file_name= $this->upload->data('file_name');
-        $image_path='/post_images/'.$file_name;
+        $error = $this->upload->display_errors('<p>', '</p>');
+        $file_name = $this->upload->data('file_name');
+        $image_path = '/post_images/' . $file_name;
 
         $config['image_library'] = 'gd2';
-        $config['source_image'] = '/post_images/'.$file_name;
+        $config['source_image'] = '/post_images/' . $file_name;
         $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = FALSE;
         $config['width']         = 1920;
@@ -36,34 +36,50 @@ class Postcontent extends CI_Controller
         $this->load->library('image_lib', $config);
         $this->image_lib->resize(); //Image Cropped
 
-        $this->load->model('postcontentmodel','post', TRUE);
-        $post_id = $this->post->savePost($title_eng,$title_sin, $desc,$content_eng,$content_sin,$keywords, $image_path,$publish,$author,$lang);
-        echo "Post Title : ".$title_eng."/".$title_sin."<br> Created Success. <br>ID : ".$post_id;
+        $this->load->model('postcontentmodel', 'post', TRUE);
+        $post_id = $this->post->savePost($title_eng, $title_sin, $desc, $content_eng, $content_sin, $keywords, $image_path, $publish, $author, $lang);
+        echo "Post Title : " . $title_eng . "/" . $title_sin . "<br> Created Success. <br>ID : " . $post_id;
         echo $error;
         echo "<br><a href='/admin/newpost'>Back</a>";
     }
 
-    public function view($lang,$id){
-        $this->load->model('postcontentmodel','post', TRUE);
-        $post = $this->post->getPostContent($lang,$id);
+    public function view($lang, $id, $option = "")
+    {
 
-        $recent_post=$this->post->recentPost();
-		$top_post=$this->post->topPost();
+        $this->load->model('postcontentmodel', 'post', TRUE);
+        $post = $this->post->getPostContent($lang, $id);
 
-        $data=array(
-            'row'=>$post
+        $recent_post = $this->post->recentPost();
+        $top_post = $this->post->topPost();
+
+        $data = array(
+            'row' => $post,
+            'lang' => $lang,
+            'id' => $id
         );
 
-        $maindata=array(
-            'row'=>$post,
-            'recentpost'=>$recent_post,
-            'top_post'=>$top_post
-        );
+        if ($option == 'fiverform') {
+            $this->load->view('post/header', $data);
+            $this->load->view('post/fiver_form');
+            $this->load->view('template/footer');
+           return;
+        } elseif ($option == 'ebatesref') {
+            $this->load->view('post/header', $data);
+            $this->load->view('post/ebates_form');
+            $this->load->view('template/footer');
+           return;
+        }
+            $maindata = array(
+                'row' => $post,
+                'recentpost' => $recent_post,
+                'top_post' => $top_post
+            );
+    
+            $this->load->view('post/header', $data);
+            $this->load->view('post/body', $maindata);
+            $this->load->view('template/footer');
+        }
 
-        $this->load->view('post/header',$data);
-        $this->load->view('post/body',$maindata);
-        $this->load->view('template/footer');
+        
     }
 
-
-}

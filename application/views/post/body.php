@@ -2,7 +2,7 @@
     <div class="col">
         <!-- Navigation Pane -->
         <nav class="navbar navbar-expand-md navbar-dark elegant-color-dark shadow-lg mb-4">
-            <a class="navbar-brand" href="https://www.emoneydream.com"><img src="/Images/favicon.png" style="width:20px;" alt="E-Money Dream">&nbsp;E-Money
+            <a class="navbar-brand" href="/index.php"><img src="/Images/favicon.png" style="width:20px;" alt="E-Money Dream">&nbsp;E-Money
                 Dream</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
                     <?php if ($row->title == "Free Fiverr Reviews") : ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/postcontent/regfiver">Registration Form</a>
+                            <a class="nav-link" href="/postcontent/view/<?=$lang?>/<?=$id?>/fiverform" >Registration Form</a>
                         </li>
 
                     <?php endif; ?>
@@ -25,7 +25,7 @@
                     <?php if ($row->title == "Earn Money From Ebates" || $row->title == "Ebates මගින් මුදල් සෙවීම") : ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/postcontent/ebatesref">Referal Claim</a>
+                            <a class="nav-link" href="/postcontent/view/<?=$lang?>/<?=$id?>/ebatesref" >Referal Claim</a>
                         </li>
 
                     <?php endif; ?>
@@ -83,117 +83,113 @@
     <!-- Sidebar -->
     <div class="col-md-3">
 
-    <div class="ml-1 mr-1 row">
-				<div class="col-md-12 mb-1">
-					<h4 class="text-muted font-weight-light">Recent Posts</h4>
-				</div>
-				<div class="col-md-12">
-                    <?php foreach ($recentpost->result() as $row) : ?>
-                    <?php if($row->lang=='both'){
-                        $sin="";
-                        $eng="";
-                    }elseif($row->lang=='sin'){
-                        $sin="";
-                        $eng="disabled";
-                    }elseif($row->lang=='eng'){
-                        $sin="disabled";
-                        $eng="";
-                    }else{
-                        $sin="disabled";
-                        $eng="disabled";
+        <div class="ml-1 mr-1 row">
+            <div class="col-md-12 mb-1">
+                <h4 class="text-muted font-weight-light">Recent Posts</h4>
+            </div>
+            <div class="col-md-12">
+                <?php foreach ($recentpost->result() as $row) : ?>
+                    <?php if ($row->lang == 'both') {
+                        $sin = "";
+                        $eng = "";
+                    } elseif ($row->lang == 'sin') {
+                        $sin = "";
+                        $eng = "disabled";
+                    } elseif ($row->lang == 'eng') {
+                        $sin = "disabled";
+                        $eng = "";
+                    } else {
+                        $sin = "disabled";
+                        $eng = "disabled";
                     }  ?>
 
-					<div class="row">
-						<div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
 
-							<div class="card text-dark bg-light mb-2">
-								<h5 class="card-header"><?= $row->title_sin ?></h5>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-5">
-											<img class="w-100" src="<?= $row->imgpath ?>" alt="fiverr">
-										</div>
-										<div class="col-7">
-											Read More<br>
-											<a href="/postcontent/view/eng/<?=$row->id?>" target="self" 
-												class="btn <?=$eng ?> mb-2 btn-sm btn-primary">English
-											</a>
+                            <div class="card text-dark bg-light mb-2">
+                                <h5 class="card-header"><?= $row->title_sin ?></h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <img class="w-100" src="<?= $row->imgpath ?>" alt="fiverr">
+                                        </div>
+                                        <div class="col-7">
+                                            Read More<br>
+                                            <a href="/postcontent/view/eng/<?= $row->id ?>" target="self" class="btn <?= $eng ?> mb-2 btn-sm btn-primary">English
+                                            </a>
 
-											<a href="/postcontent/view/sin/<?=$row->id?>" target="self" 
-												class="btn <?=$sin ?> btn-sm mb-2 btn-primary">සිංහල
-											</a>
-										</div>
+                                            <a href="/postcontent/view/sin/<?= $row->id ?>" target="self" class="btn <?= $sin ?> btn-sm mb-2 btn-primary">සිංහල
+                                            </a>
+                                        </div>
 
-									</div>
+                                    </div>
 
-								</div>
-							</div>
+                                </div>
+                            </div>
 
-						</div>
-					</div>
+                        </div>
+                    </div>
 
-					<?php endforeach; ?>
-				</div>
-			</div>
+                <?php endforeach; ?>
+            </div>
+        </div>
 
 
-			<div class="mt-1 ml-1 mr-1 row">
+        <div class="mt-1 ml-1 mr-1 row">
 
-				<div class="col-md-12">
-					<hr style="height: 1px !important" class="bg-secondary">
-					<h4 class="text-muted font-weight-light">Popular Posts</h4>
-				</div>
-				<div class="mt-1 col-md-12">
-                    <?php foreach ($top_post->result() as $row): ?>
-                    <?php if($row->lang=='both'){
-                        $sin="";
-                        $eng="";
-                    }elseif($row->lang=='sin'){
-                        $sin="";
-                        $eng="disabled";
-                    }elseif($row->lang=='eng'){
-                        $sin="disabled";
-                        $eng="";
-                    }else{
-                        $sin="disabled";
-                        $eng="disabled";
+            <div class="col-md-12">
+                <hr style="height: 1px !important" class="bg-secondary">
+                <h4 class="text-muted font-weight-light">Popular Posts</h4>
+            </div>
+            <div class="mt-1 col-md-12">
+                <?php foreach ($top_post->result() as $row) : ?>
+                    <?php if ($row->lang == 'both') {
+                        $sin = "";
+                        $eng = "";
+                    } elseif ($row->lang == 'sin') {
+                        $sin = "";
+                        $eng = "disabled";
+                    } elseif ($row->lang == 'eng') {
+                        $sin = "disabled";
+                        $eng = "";
+                    } else {
+                        $sin = "disabled";
+                        $eng = "disabled";
                     }  ?>
 
-                   
-					<div class="row">
-						<div class="col-md-12">
 
-							<div class="card text-dark bg-light mb-2">
-								<h5 class="card-header"><?= $row->title_sin ?></h5>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-5">
-											<img class="w-100" src="<?= $row->imgpath ?>" alt="fiverr">
-										</div>
-										<div class="col-7">
-											Read More<br>
-											<a href="/postcontent/view/eng/<?=$row->id?>" target="self" 
-												class="btn mb-2 <?=$eng ?> btn-sm btn-primary">English
-											</a>
+                    <div class="row">
+                        <div class="col-md-12">
 
-											<a href="/postcontent/view/sin/<?=$row->id?>" target="self" 
-												class="btn <?=$sin ?> btn-sm mb-2 btn-primary">සිංහල
-											</a>
-										</div>
+                            <div class="card text-dark bg-light mb-2">
+                                <h5 class="card-header"><?= $row->title_sin ?></h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <img class="w-100" src="<?= $row->imgpath ?>" alt="fiverr">
+                                        </div>
+                                        <div class="col-7">
+                                            Read More<br>
+                                            <a href="/postcontent/view/eng/<?= $row->id ?>" target="self" class="btn mb-2 <?= $eng ?> btn-sm btn-primary">English
+                                            </a>
 
-									</div>
+                                            <a href="/postcontent/view/sin/<?= $row->id ?>" target="self" class="btn <?= $sin ?> btn-sm mb-2 btn-primary">සිංහල
+                                            </a>
+                                        </div>
 
-								</div>
-							</div>
+                                    </div>
 
-						</div>
-					</div>
+                                </div>
+                            </div>
 
-                    <?php endforeach; ?>
+                        </div>
+                    </div>
 
-                </div>
-               
-			</div>
+                <?php endforeach; ?>
+
+            </div>
+
+        </div>
 
     </div>
 </div>

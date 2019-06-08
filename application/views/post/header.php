@@ -34,7 +34,7 @@
 
     <!-- Site Details -->
     <title><?=$row->title?></title>
-    
+
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="/Images/favicon.png" />
 
@@ -54,8 +54,7 @@
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Analytic Js -->
-    <script src="js/anal.js"></script>
+   
 
 </head>
 
