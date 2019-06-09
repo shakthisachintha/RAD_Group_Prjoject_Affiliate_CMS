@@ -66,4 +66,16 @@ class Postcontentmodel extends CI_Model
         $query = $this->db->get('post');
         return $query;
     }
+
+    public function publish($id){
+        $this->db->set('published', 'yes');
+        $this->db->where('id', $id);
+        return $this->db->update('post');
+    }
+
+    public function unpublish($id){
+        $this->db->set('published', 'no');
+        $this->db->where('id', $id);
+        return $this->db->update('post');
+    }
 }
