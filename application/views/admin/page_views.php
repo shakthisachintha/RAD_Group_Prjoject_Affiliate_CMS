@@ -170,8 +170,14 @@
 										<td>
 											<form>
 												<div class="custom-control custom-switch">
-													<input <?php if($result->published=="yes"){echo "checked";} ?> type="checkbox" class="custom-control-input" id="switch<?= $result->id ?>">
-													<label class="custom-control-label" for="switch<?= $result->id ?>"><?php if($result->published=="yes"){echo "Yes";}else{echo "No";} ?></label>
+													<input onchange="update(this.id)" value="<?= $result->published ?>" <?php if ($result->published == "yes") {
+																															echo "checked";
+																														} ?> type="checkbox" class="custom-control-input" id="<?= $result->id ?>">
+													<label class="custom-control-label" id="lbl<?= $result->id ?>" for="<?= $result->id ?>"><?php if ($result->published == "yes") {
+																																				echo "Yes";
+																																			} else {
+																																				echo "No";
+																																			} ?></label>
 												</div>
 											</form>
 										</td>
@@ -190,7 +196,32 @@
 <!-- /#page-content-wrapper -->
 
 
+<script>
+	function update(id) {
+		var val = $("#" + id).val();
+		if (val == "yes") {
+			$.ajax({
+				type: "post",
+				url: "/postcontent/publishToggle/" + id + "/" + val,
+				success: function(response) {
+				}
+			});
+			$("#" + id).val('no');
+			$("#lbl" + id).text('No');
 
+		} else if (val == "no") {
+			$.ajax({
+				type: "post",
+				url: "/postcontent/publishToggle/" + id + "/" + val,
+				success: function(response) {
+				}
+			});
+			$("#" + id).val('yes');
+			$("#lbl" + id).text('Yes');
+		}
+
+	}
+</script>
 
 
 

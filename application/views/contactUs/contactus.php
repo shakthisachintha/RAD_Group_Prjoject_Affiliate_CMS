@@ -73,7 +73,7 @@
                           $("#Msg").removeClass("border border-danger");
                           $("#btn-submit").removeClass("btn-danger");
 
-                          suc();
+                          succc();
                           $("#btn-submit").removeClass("btn-primary");
                           $("#btn-submit").addClass("btn-success");
                           $("#btn-submit").val(status);
@@ -114,7 +114,7 @@
           )
       }
 
-      function suc() {
+      function succc() {
           Swal.fire(
               'Thank You!',
               'Your Feedback Has Been Sent',
