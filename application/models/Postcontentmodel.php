@@ -59,4 +59,23 @@ class Postcontentmodel extends CI_Model
         $query = $this->db->get('post',3);
         return $query;
     }
+
+    public function allPost(){
+        $this->db->select('id,lang,title_eng as title,views,author,published');
+        $this->db->order_by('timestamp', 'DESC');
+        $query = $this->db->get('post');
+        return $query;
+    }
+
+    public function publish($id){
+        $this->db->set('published', 'yes');
+        $this->db->where('id', $id);
+        return $this->db->update('post');
+    }
+
+    public function unpublish($id){
+        $this->db->set('published', 'no');
+        $this->db->where('id', $id);
+        return $this->db->update('post');
+    }
 }

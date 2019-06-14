@@ -37,16 +37,38 @@ class Admin extends CI_Controller
             $this->load->view('admin/new_post');
             $this->load->view('admin/template/footer');
         } elseif ($page == "views") {
+
+            $this->load->model('Analyticsmodel','analytic',TRUE);
+            $query=$this->analytic->PageViewData();
+            $country=$this->analytic->PageViewDataCountry();
+            $city=$this->analytic->PageViewDataCity();
+
+            $this->load->model('Postcontentmodel','post',TRUE);
+            $post=$this->post->allPost();
+
+            $data=array(
+                "monthly"=>$query,
+                "country"=>$country,
+                "city"=>$city,
+                "post"=>$post
+            );
+
             $this->load->view('admin/template/header');
-            $this->load->view('admin/page_views');
+            $this->load->view('admin/page_views',$data);
             $this->load->view('admin/template/footer');
         } elseif ($page == "ebatesform") {
             $this->load->view('admin/template/header');
             $this->load->view('admin/ebates_form');
             $this->load->view('admin/template/footer');
         } elseif ($page == "links") {
+            $this->load->model('linkdatamodel','link', TRUE);
+            $query=$this->link->getLinks();
+            $data=array(
+                "query"=>$query
+            );
+
             $this->load->view('admin/template/header');
-            $this->load->view('admin/link_clicks');
+            $this->load->view('admin/link_clicks',$data);
             $this->load->view('admin/template/footer');
         }elseif ($page == "linkgen") {
             $this->load->model('linkdatamodel','link', TRUE);

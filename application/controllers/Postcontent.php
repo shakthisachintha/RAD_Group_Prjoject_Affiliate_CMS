@@ -81,6 +81,15 @@ class Postcontent extends CI_Controller
             $this->load->view('template/footer');
         }
 
+        public function publishToggle($id,$val){
+            $this->load->model('postcontentmodel','post',TRUE);
+            if($val=="yes"){
+                $this->post->unpublish($id);
+            }elseif($val=="no"){
+                $this->post->publish($id);
+            }
+        }
+
         
     }
 

@@ -30,16 +30,19 @@ class Linkdata extends CI_Controller
         $this->load->model('linkdatamodel','', TRUE);
         $query = $this->linkdatamodel->getLinkRecord($link_id);
         $count = 1;
+        if($query->num_rows()==0){
+            echo "No One Has Clicked The Linked Yet";
+            return;
+        }
         foreach ($query->result() as $row) {
             echo "<tr class='md-form'>";
             echo "<td>$count</td>";
             echo "<td>$row->date</td>";
             echo "<td>$row->ip</td>";
             echo "<td>$row->isp</td>";
-            echo "<td> <form id='update' action='update.php' method='POST'><input type='text' name='country' value='$row->country' class='form-control form-control-sm'></td>";
-            echo "<td><input type='text' name='city' value='$row->city' class='form-control form-control-sm'></td>";
-            echo "<td><input type='text' name='province' value='$row->province' class='form-control form-control-sm'></td>";
-            echo "<td><button type='submit' value=" . $row->rec_id . " class='btn btn-primary btn-sm' name='rec' id='rec'>Update</button></form></td>";
+            echo "<td>$row->country</td>";
+            echo "<td>$row->city</td>";
+            echo "<td>$row->province</td>";
             echo "<td><form action='/linkdata/del/$row->rec_id' id='del_form' method=POST><button name='rec_id' type='submit' class='btn btn-warning btn-sm'>Delete</button></form></td>\n";
             echo "</tr>";
             $count++;
@@ -79,6 +82,19 @@ class Linkdata extends CI_Controller
         $this->load->library('user_agent');
         $this->load->helper('url');
         redirect($this->agent->referrer());
+    }
+
+    public function click(){
+        $Link_id=$this->input->post('Link_id');
+        $Time=$this->input->post('Time');
+        $IP=$this->input->post('IP');
+        $Country=$this->input->post('Country');
+        $City=$this->input->post('City');
+        $ISP=$this->input->post('ISP');
+        $Province=$this->input->post('Province');
+
+        $this->load->model('linkdatamodel', "content", TRUE);
+        echo $this->content->linkClick($Link_id, $IP, $City, $Country, $ISP, $Time, $Province);
     }
 
 }

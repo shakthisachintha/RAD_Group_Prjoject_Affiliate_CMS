@@ -1,7 +1,7 @@
 <div class="bg-dark border-right" id="sidebar-wrapper">
 	<div class="text-success sidebar-heading">Admin Panel </div>
 	<div class="list-group list-group-flush">
-	<a href="/admin/profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
+		<a href="/admin/profile" class="list-group-item text-primary list-group-item-action bg-dark">Profile</a>
 		<a href="/admin/links" class="list-group-item text-primary list-group-item-action bg-dark">Link Clicks</a>
 		<a href="/admin/linkgen" class="list-group-item text-primary list-group-item-action bg-dark">Generate Link</a>
 		<a href="/admin/contacts" class="list-group-item text-primary list-group-item-action bg-dark">Contact Messages</a>
@@ -24,7 +24,7 @@
 
 		<button class="navbar-toggler" id="menu-toggle"><span id="menu-toggle" class="navbar-toggler-icon"></span></button>
 
-	
+
 		<h4 class="align-bottom text-success mx-auto">E-Money Dream Admin Panel</h4>
 
 	</nav>
@@ -32,9 +32,39 @@
 	<div id="main_content" class="container-fluid">
 		<h1 class="display-4 text-secondary">Send an Email</h1>
 
-<!-- content goes here -->
-	
+		<!-- content goes here -->
 
+		<div class="row">
+			<div class="col">
+				<h1 class="display-5 text-center text-primary">Send Emails To Anyone</h1>
+				<form id="link_gen" method="post" class="border text-primary border-primary p-4 m-3 rounded" action="/linkdata/linkGen">
+					<div class="form-group">
+						<label for="url">To</label>
+						<input name="toemail" id="toemail" required class="form-control" type="email">
+					</div>
+
+
+					<div class="form-group">
+						<label for="subject">Subject</label>
+						<input name="subject" required id="subject" class="form-control" type="text">
+					</div>
+
+					<div class="form-group">
+						<label for="desc">Message</label>
+						<textarea name="desc" id="desc" class="form-control" rows="5"></textarea>
+					</div>
+
+					<div class="form-group form-check form-check-inline">
+						<input id="send" value="Send Email" class="btn btn-outline-primary form-control form-check-input" type="submit">
+						<input id="save" value="Save as Draft" class="btn btn-outline-secondary form-control form-check-input" type="button">
+					</div>
+
+
+				</form>
+
+
+			</div>
+		</div>
 
 
 	</div>

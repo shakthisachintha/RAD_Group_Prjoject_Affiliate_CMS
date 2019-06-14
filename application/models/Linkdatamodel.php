@@ -68,4 +68,20 @@ class Linkdatamodel extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function linkClick($link_id, $ip, $city, $country, $isp, $time, $province){
+        $this->db->set('id', $link_id);
+        $this->db->set('country', $country);
+        $this->db->set('isp', $isp);
+        $this->db->set('province', $province);
+        $this->db->set('date', $time);
+        $this->db->set('city', $city);
+        $this->db->set('ip', $ip);
+        $this->db->insert('link_clicks');
+
+        $query=$this->getLinkData($link_id);
+        foreach ($query->result() as $row) {
+            echo $row->url;
+        }
+    }
 }

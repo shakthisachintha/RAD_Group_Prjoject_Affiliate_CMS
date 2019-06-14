@@ -114,6 +114,7 @@
                      
                       } else {
                         $("#btn-submit-cntct").attr('disabled', 'disabled');
+                        $("#btn-submit-cntct").text("Subscribed");
                           error();
 
                       }

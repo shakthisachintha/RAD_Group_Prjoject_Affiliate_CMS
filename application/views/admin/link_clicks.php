@@ -179,10 +179,9 @@
 			<select onchange="select_func(this.value)" name="link"
 				class="form-control text-info form-check-inline bg-black border border-white" id="link_select">
 				<option class="text-muted" value="na">Select Link</option>
-				<option class="text-info" value="LINK01">Ebates Referral</option>
-				<option class="text-info" value="LINK02">Binary Option Referral</option>
-				<option class="text-info" value="LINK03">Up4ever Referral</option>
-				<option class="text-info" value="Link04">Fiverr Referral</option>
+				<?php foreach($query->result() as $row): ?>
+				<option class="text-info" value="<?=$row->id?>"><?=$row->name?></option>
+				<?php endforeach; ?>
 			</select>
 			<button id="btn_fetch" disabled class="btn btn-outline-primary">Fetch</button>
 		</div>
@@ -211,7 +210,6 @@
 							<th>Country</th>
 							<th>City</th>
                             <th>Province</th>
-                            <th></th>
                             <th></th>
 						</tr>
 					</thead>

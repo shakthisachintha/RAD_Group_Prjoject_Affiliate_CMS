@@ -11,6 +11,5 @@ class Contactdatamodel extends CI_Model
     {
         $this->db->where('id', $id);
         return $this->db->delete('contact_us');
-        
     }
 }
