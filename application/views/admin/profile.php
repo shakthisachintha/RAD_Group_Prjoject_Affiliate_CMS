@@ -36,8 +36,58 @@
 
 		<!-- Your Content Goes Here -->
 
+		<div class="form-group">
+			<label class="text-primary" for="lblUser">Name</label>
+			<input type="text" value="<?= $this->session->userdata('admin_name') ?>" class="form-control">
+		</div>
+		<div class="form-group">
+			<label class="text-primary" for="lblEmail">Email</label>
+			<input type="text" value="<?= $this->session->userdata('admin_email') ?>" class="form-control">
+		</div>
+
+		<div class="text-center">
+			<button class="btn btn-primary" name="cngPwd">Change Password</button>
+		</div>
+
+
+		<h4 class="display-4 text-secondary">Change Password</h4>
+		<?php if (isset($_SESSION['success'])) { ?>
+			<div class="alert alert-success"><?php echo $_SESSION['success']; ?></div>
+		<?php
+	} ?>
+
+
+		<form class="text-primary" action="" method="POST">
+
+			<div class="form-group">
+				<label for="lblEmail">Email </label>
+				<input class="form-control" placeholder="Enter Valid Email" name="txtEmail" id="txtEmail" type="text">
+			</div>
+			<div class="form-group">
+				<label for="lblPasswd">Current Password </label>
+				<input class="form-control" placeholder="Enter Password" name="txtPwd" id="txtPwd" type="password">
+			</div>
+
+			<div class="form-group">
+				<label for="lblPasswd">New Password </label>
+				<input class="form-control" placeholder="Enter Password" name="txtNewPwd" id="txtPwd" type="password">
+			</div>
+
+			<div class="form-group">
+				<label for="lblRePasswd">Confirm Password </label>
+				<input class="form-control" placeholder="Re-Enter Password" name="txtRePwd" id="txtRePwd" type="password">
+			</div>
+
+			<div class="text-center">
+				<button class="btn btn-primary" name="pwdChange">Change Password</button>
+			</div>
+
+		</form>
+
 
 	</div>
+
+</div>
 </div>
 <!-- /#page-content-wrapper -->
 
