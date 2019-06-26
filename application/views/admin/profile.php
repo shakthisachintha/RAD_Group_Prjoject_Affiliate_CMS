@@ -35,19 +35,17 @@
 		<h1 class="display-4 text-secondary">Profile</h1>
 
 		<!-- Your Content Goes Here -->
+		<div class="m-5">
+			<div class="form-group">
+				<label class="text-primary" for="lblUser">Name</label>
+				<input type="text" value="<?= $this->session->userdata('admin_name') ?>" class="form-control">
+			</div>
+			<div class="form-group">
+				<label class="text-primary" for="lblEmail">Email</label>
+				<input type="text" value="<?= $this->session->userdata('admin_email') ?>" class="form-control">
+			</div>
+		</div>
 
-		<div class="form-group">
-			<label class="text-primary" for="lblUser">Name</label>
-			<input type="text" value="<?= $this->session->userdata('admin_name') ?>" class="form-control">
-		</div>
-		<div class="form-group">
-			<label class="text-primary" for="lblEmail">Email</label>
-			<input type="text" value="<?= $this->session->userdata('admin_email') ?>" class="form-control">
-		</div>
-
-		<div class="text-center">
-			<button class="btn btn-primary" name="cngPwd">Change Password</button>
-		</div>
 
 
 		<h4 class="display-4 text-secondary">Change Password</h4>
@@ -57,7 +55,7 @@
 	} ?>
 
 
-		<form class="text-primary" action="" method="POST">
+		<form class="text-primary m-5 mb-3" action="" method="POST">
 
 			<div class="form-group">
 				<label for="lblEmail">Email </label>
