@@ -21,8 +21,13 @@ class Admin extends CI_Controller
             $this->load->view('admin/profile');
             $this->load->view('admin/template/footer');
         } elseif ($page == "mail_send") {
+            $this->load->model('contactdatamodel','emailform',TRUE);
+            $messages=$this->emailform->getMessage4();
+            $data=array(
+                "query"=>$messages
+            );
             $this->load->view('admin/template/header');
-            $this->load->view('admin/mail_send');
+            $this->load->view('admin/mail_send',$data);
             $this->load->view('admin/template/footer');
         } elseif ($page == "mail_outbox") {
             $this->load->view('admin/template/header');

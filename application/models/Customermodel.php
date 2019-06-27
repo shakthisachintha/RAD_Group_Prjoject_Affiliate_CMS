@@ -75,4 +75,17 @@ class Customermodel extends CI_Model
             return $this->db->insert_id();
         }
     }
+    public function emailform($Id,$Email,$Subject,$Comment){
+        $data=array(
+            'id'=>$Id,
+            'email'=>$Email,
+            'subject'=>$Subject,
+            'comment'=>$Comment,
+            
+        );
+
+        if($this->db->insert('mail_send',$data)){
+            return $this->db->insert_id();
+        }
+    }
 }

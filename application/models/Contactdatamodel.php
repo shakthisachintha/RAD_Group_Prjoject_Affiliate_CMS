@@ -19,6 +19,12 @@ class Contactdatamodel extends CI_Model
         $query = $this->db->get('fiverr_form');
         return $query;
     }
+    public function getMessage4()//email
+    {
+        $this->db->select('*');
+        $query = $this->db->get('email_d');
+        return $query;
+    }
     public function delete($id)
     {
         $this->db->where('id', $id);
