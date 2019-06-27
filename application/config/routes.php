@@ -72,3 +72,5 @@ $route['admin/auth']       = '/admin/login';
 $route['admin/:any']        = '/admin/index/profile';
 
 $route['translate_uri_dashes'] = FALSE;
+$route['send-email'] = 'email controller';
+$route['email'] = 'email controller/send';

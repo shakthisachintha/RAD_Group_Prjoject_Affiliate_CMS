@@ -38,35 +38,19 @@
 			<div class="col">
 				<h1 class="display-5 text-center text-primary">Send Emails To Anyone</h1>
 				<form id="link_gen" method="post" class="border text-primary border-primary p-4 m-3 rounded" action="/EmailController/send">
-					<div class="form-group">
-						<label for="url">To</label>
-						<input name="to" id="toemail" required class="form-control" type="email">
-					</div>
-
-
-					<div class="form-group">
-						<label for="subject">Subject</label>
-						<input name="subject" required id="subject" class="form-control" type="text">
-					</div>
-
-					<div class="form-group">
-						<label for="desc">Message</label>
-						<textarea name="message" id="desc" class="form-control" rows="5"></textarea>
-					</div>
-
-					<div class="form-group form-check form-check-inline">
-						<input id="send" value="Send Email" class="btn btn-outline-primary form-control form-check-input" type="submit">
-						<input id="save" value="Save as Draft" class="btn btn-outline-secondary form-control form-check-input" formaction="/EmailController/save" type="submit">
-					</div>
-
+				<input type="email" id="to" name="to" placeholder="Receiver Email">
+                <br><br>
+                <input type="text" id="subject" name="subject" placeholder="Subject">
+                <br><br>
+                <textarea rows="6" id="message" name="message" placeholder="Type your message here"></textarea>
+                <br><br>
+                <input type="submit" name="send" class="btn-danger"value="Send Email" />
+                <br><br>
 
 				</form>
-
-
-			</div>
+  
 		</div>
-
-
+		
 	</div>
 </div>
 <!-- /#page-content-wrapper -->
