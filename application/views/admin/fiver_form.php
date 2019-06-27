@@ -34,7 +34,46 @@
 
 		<!-- content goes here -->
 
-
+		<div class="mt-4" id="data_table">
+			
+			<div class="table-dark text-warning table-hover table-responsive-md">
+				<table class="table">
+					<thead class="thead-light">
+						<tr>
+						    <th>reference</th>
+							<th>name</th>
+							<th>email</th>
+							<th>phone</th>
+							<th>payment_method</th>
+							<th>payment_details</th>
+							<th>reg_date</th>
+							<th>gigid</th>
+							<th>rev_link</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+					<?php foreach($query->result() as $result): ?>
+						
+						<tr>
+							
+							<td><?=$result->reference;?></td>
+							<td><?=$result->name;?></td>
+							<td><?=$result->email;?></td>
+							<td><?=$result->phone;?></td>
+							<td><?=$result->payment_method;?></td>
+							<td><?=$result->payment_details;?></td>
+							<td><?=$result->reg_date;?></td>
+							<td><?=$result->gigid;?></td>
+							<td><?=$result->rev_link;?></td>
+							
+							
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
 
 	</div>
