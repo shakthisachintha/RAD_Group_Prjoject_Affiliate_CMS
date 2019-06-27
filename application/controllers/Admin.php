@@ -56,11 +56,16 @@ class Admin extends CI_Controller
             $this->load->view('admin/template/header');
             $this->load->view('admin/page_views',$data);
             $this->load->view('admin/template/footer');
-        } elseif ($page == "ebatesform") {
+        } elseif ($page == "ebatesform") {               // ebates
+            $this->load->model('contactdatamodel','ebatesFormLog',TRUE);
+            $messages=$this->ebatesFormLog->getMessage2();
+            $data=array(
+                "query"=>$messages
+            );
             $this->load->view('admin/template/header');
-            $this->load->view('admin/ebates_form');
+            $this->load->view('admin/ebates_form',$data);
             $this->load->view('admin/template/footer');
-        } elseif ($page == "links") {
+         } elseif ($page == "links") {
             $this->load->model('linkdatamodel','link', TRUE);
             $query=$this->link->getLinks();
             $data=array(
@@ -79,9 +84,14 @@ class Admin extends CI_Controller
             $this->load->view('admin/template/header');
             $this->load->view('admin/generate_link',$data);
             $this->load->view('admin/template/footer');
-        }elseif ($page == "fiver") {
+        }elseif ($page == "fiver") {                        //five
+            $this->load->model('contactdatamodel','fiverFormLog',TRUE);
+            $messages=$this->fiverFormLog->getMessage3();
+            $data=array(
+                "query"=>$messages
+            );
             $this->load->view('admin/template/header');
-            $this->load->view('admin/fiver_form');
+            $this->load->view('admin/fiver_form',$data);
             $this->load->view('admin/template/footer');
         }elseif ($page == "login") {
             $this->load->view('admin/login');
