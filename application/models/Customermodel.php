@@ -49,7 +49,7 @@ class Customermodel extends CI_Model
             'name'=>$Name,
             'email'=>$Email,
             'phone'=>$Phone,
-            'payment_method'=>$Pay,
+            'payment_method'=>$Pay,           
             'payment_details'=>$Pay_Det,
             'gigid'=>$Gigid,
             'profile'=>$Prof_link,
@@ -75,5 +75,6 @@ class Customermodel extends CI_Model
             return $this->db->insert_id();
         }
     }
+   
     
 }
