@@ -55,4 +55,24 @@ class Userdatamodel extends CI_Model
         $result=$query->result()[0];
         return $result;
     }
+
+    public function changeAdminPass($password,$email){
+        $data = array(
+            'password'=>$password
+        );
+
+        $this->db->where('email', $email);
+        return $this->db->update('admin_user', $data);
+    }
+
+    public function makeAdmin($name,$nick,$password,$email){
+        $data=array(
+            "name"      =>$name, 
+            "email"     =>$email,
+            "password"  =>$password,
+            "nickname"  =>$nick,
+        );
+
+        return ($this->db->insert('admin_user', $data));
+    }
 }

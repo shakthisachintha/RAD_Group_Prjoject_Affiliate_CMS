@@ -49,35 +49,66 @@
 
 
 		<h4 class="display-4 text-secondary">Change Password</h4>
-		<?php if (isset($_SESSION['success'])) { ?>
-			<div class="alert alert-success"><?php echo $_SESSION['success']; ?></div>
-		<?php
-	} ?>
 
 
-		<form class="text-primary m-5 mb-3" action="" method="POST">
+
+		<form class="text-primary m-5 mb-3" action="<?= base_url() ?>Admin/changePw" method="POST">
 
 			<div class="form-group">
-				<label for="lblEmail">Email </label>
-				<input class="form-control" placeholder="Enter Valid Email" name="txtEmail" id="txtEmail" type="text">
-			</div>
-			<div class="form-group">
-				<label for="lblPasswd">Current Password </label>
-				<input class="form-control" placeholder="Enter Password" name="txtPwd" id="txtPwd" type="password">
+				<label for="lblPasswd">Current Password</label>
+				<input class="form-control" placeholder="Enter Password" name="curpwd" id="txtPwd" type="password">
 			</div>
 
 			<div class="form-group">
-				<label for="lblPasswd">New Password </label>
-				<input class="form-control" placeholder="Enter Password" name="txtNewPwd" id="txtPwd" type="password">
+				<label for="lblPasswd">New Password</label>
+				<input class="form-control" placeholder="Enter Password" name="newpwd" id="txtPwd" type="password">
 			</div>
 
 			<div class="form-group">
 				<label for="lblRePasswd">Confirm Password </label>
-				<input class="form-control" placeholder="Re-Enter Password" name="txtRePwd" id="txtRePwd" type="password">
+				<input class="form-control" placeholder="Re-Enter Password" name="repwd" id="txtRePwd" type="password">
 			</div>
 
 			<div class="text-center">
-				<button class="btn btn-primary" name="pwdChange">Change Password</button>
+				<button class="btn btn-primary" type="submit" name="pwdChange">Change Password</button>
+			</div>
+
+		</form>
+
+
+		<h4 class="display-4 text-secondary">New Account</h4>
+
+
+
+		<form class="text-primary m-5 mb-3" action="<?= base_url() ?>Admin/accNew" method="POST">
+
+			<div class="form-group">
+				<label for="lblname">Name</label>
+				<input class="form-control" placeholder="New Admins's Name" name="name" id="txtPwd" type="text" required>
+			</div>
+
+			<div class="form-group">
+				<label for="lblPasswd">Author Nickname</label>
+				<input class="form-control" placeholder="This Will Be The Author Name" name="nickname" id="txtPwd" type="text" required>
+			</div>
+
+			<div class="form-group">
+				<label for="lblPasswd">Email</label>
+				<input class="form-control" required placeholder="Email Address" name="email" id="txtPwd" type="email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="lblPasswd">Password</label>
+				<input class="form-control" placeholder="Enter Password" name="pwd" id="txtPwd" type="password" required>
+			</div>
+
+			<div class="form-group">
+				<label for="lblRePasswd">Confirm Password </label>
+				<input class="form-control" placeholder="Re-Enter Password" name="repwd" id="txtRePwd" type="password">
+			</div>
+
+			<div class="text-center">
+				<button class="btn btn-primary" type="submit" name="newadmin">Create Account</button>
 			</div>
 
 		</form>
