@@ -38,14 +38,24 @@
 			<div class="col">
 				<h1 class="display-5 text-center text-primary">Send Emails To Anyone</h1>
 				<form id="link_gen" method="post" class="border text-primary border-primary p-4 m-3 rounded" action="/EmailController/send">
-				<input type="email" id="to" name="to" placeholder="Receiver Email">
-                <br><br>
-                <input type="text" id="subject" name="subject" placeholder="Subject">
-                <br><br>
-                <textarea rows="6" id="message" name="message" placeholder="Type your message here"></textarea>
-                <br><br>
-                <input type="submit" name="send" class="btn-danger"value="Send Email" />
-                <br><br>
+				<div class="form-group">
+					<label for="Receiver Email">Receiver Email</label>
+					<input placeholder="Receiver Email" id="Receiver Email" class="form-control" type="email" name="to">
+				</div>
+				
+				<div class="form-group">
+					<label for="subject">Subject</label>
+					<input id="subject" class="form-control" type="text" name="subject">
+				</div>
+               
+			   <div class="form-group">
+				   <label for="message">Message</label>
+				   <textarea rows="6" id="message" class="form-control" name="message" placeholder="Type your message here"></textarea>
+			   </div>
+               
+                
+                <input type="submit" name="send" class="btn-primary btn"value="Send Email" />
+                
 
 				</form>
   
@@ -58,10 +68,10 @@
 				<table class="table">
 					<thead class="thead-light">
 						<tr>
-						    <th>id</th>
-							<th>email</th>
-							<th>subject</th>
-							<th>comment</th>
+						    <th>#</th>
+							<th>Email</th>
+							<th>Subject</th>
+							<th>Comment</th>
 							
 							
 						</tr>
@@ -82,15 +92,3 @@
 </div>
 <!-- /#page-content-wrapper -->
 
-
-
-
-
-
-<script>
-	// Add the following code if you want the name of the file appear on select
-	$(".custom-file-input").on("change", function() {
-		var fileName = $(this).val().split("\\").pop();
-		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-	});
-</script>
