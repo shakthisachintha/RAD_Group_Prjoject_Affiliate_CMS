@@ -8,11 +8,7 @@
 			$array=$this->db->get('email_d');
 			return $array->result(); 
 		}
-		public function delete_details($id){
-			$this->db->where('email_d.id', $id);
-			return $this->db->delete('email_d');
-
-		}
+		 
 		 
       
 	}
