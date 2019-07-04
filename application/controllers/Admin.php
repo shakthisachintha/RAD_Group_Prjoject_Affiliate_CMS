@@ -10,8 +10,14 @@ class Admin extends CI_Controller
         } elseif ($page == "contacts") {
             $this->load->model('contactdatamodel', 'contact', TRUE);
             $messages = $this->contact->getMessage();
+            $dailyMessageCount = $this->contact->dailyMessageCount();
+            $monthlyMessageCount = $this->contact->monthlyMessageCount();
+            $yearlyMessageCount = $this->contact->yearlyMessageCount();
             $data = array(
-                "query" => $messages
+                "query1" => $messages,
+                "query2" => $dailyMessageCount,
+                "query3" => $monthlyMessageCount,
+                "query4" => $yearlyMessageCount
             );
             $this->load->view('admin/template/header');
             $this->load->view('admin/contact_messages', $data);
@@ -182,7 +188,8 @@ class Admin extends CI_Controller
         redirect($this->agent->referrer());
     }
 
-    public function accNew(){
+    public function accNew()
+    {
         $this->load->library('form_validation');
 
         $email  = $this->input->post('email');
@@ -193,16 +200,16 @@ class Admin extends CI_Controller
 
         $this->form_validation->set_rules('pwd', 'Password', 'required');
         $this->form_validation->set_rules('repwd', 'Confirm Password', 'required|matches[pwd]');
-     
+
         if ($this->form_validation->run() == TRUE) {
             $password = password_hash($pwd, PASSWORD_DEFAULT);
             $this->load->model('Userdatamodel', 'admin', TRUE);
-            if($this->admin->makeAdmin($name,$nick,$password,$email)){
+            if ($this->admin->makeAdmin($name, $nick, $password, $email)) {
                 echo "New Account Created Successfully";
-            }else{
+            } else {
                 echo "Unknown Error Occured";
             }
-        }else{
+        } else {
             echo "Error Occured";
             echo validation_errors();
         }
