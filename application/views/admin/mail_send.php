@@ -62,33 +62,6 @@
 		</div>
 		
 	</div>
-	<div class="mt-4" id="data_table">
-			
-			<div class="table-dark text-warning table-hover table-responsive-md">
-				<table class="table">
-					<thead class="thead-light">
-						<tr>
-						    <th>#</th>
-							<th>Email</th>
-							<th>Subject</th>
-							<th>Comment</th>
-							
-							
-						</tr>
-					</thead>
-					<tbody>
-					<?php foreach($query->result() as $result): ?>
-						
-						<tr>
-							
-							<td><?=$result->id;?></td>
-							<td><?=$result->email;?></td>
-							<td><?=$result->subject;?></td>
-							<td><?=$result->comment;?></td>
-							
-							</tr>
-						<?php endforeach; ?>
-					</tbody>
-</div>
+	 
 <!-- /#page-content-wrapper -->
 
