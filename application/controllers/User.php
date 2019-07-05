@@ -32,7 +32,7 @@ class User extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->load->library('user_agent');
-            redirect($this->agent->referrer());
+            redirect('/');
         }
     }
 
