@@ -24,6 +24,11 @@ class User extends CI_Controller
         }
     }
 
+    public function profile($user_id){
+        $this->load->view('template/header');
+        $this->load->view('template/footer');
+    }
+
     public function login()
     {
         $password = $this->input->post('password');
