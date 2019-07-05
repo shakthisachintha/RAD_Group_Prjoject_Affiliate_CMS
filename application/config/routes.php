@@ -59,7 +59,7 @@ $route['admin']             = '/admin/index/admin';
 $route['admin/contacts']    = '/admin/index/contacts';
 $route['admin/ebates']      = '/admin/index/ebatesform';
 $route['admin/links']       = '/admin/index/links';
-$route['admin/maildraft']   = '/admin/index/mail_draft';
+
 $route['admin/mailoutbox']  = '/admin/index/mail_outbox';
 $route['admin/mailnew']     = '/admin/index/mail_send';
 $route['admin/newpost']     = '/admin/index/new';

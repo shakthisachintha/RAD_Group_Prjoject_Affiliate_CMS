@@ -11,7 +11,7 @@
 		<a href="/admin/newpost" class="list-group-item text-primary list-group-item-action bg-dark">New Post</a>
 		<a href="/admin/mailnew" class="list-group-item text-primary list-group-item-action bg-dark">Send Mails</a>
 		<a href="#" class="list-group-item text-primary list-group-item-action bg-black">View Mails</a>
-		<a href="/admin/maildraft" class="list-group-item text-primary list-group-item-action bg-dark">Draft Mails</a>
+		
 		<a href="/user/logout" class="list-group-item text-warning bg-dark">Logout</a>
 	</div>
 </div>

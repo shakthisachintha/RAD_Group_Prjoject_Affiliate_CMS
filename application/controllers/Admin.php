@@ -44,11 +44,7 @@ class Admin extends CI_Controller
             $this->load->view('admin/template/header');
             $this->load->view('admin/mail_outbox',$data);
             $this->load->view('admin/template/footer');
-        } elseif ($page == "mail_draft") {
-            $this->load->view('admin/template/header');
-            $this->load->view('admin/mail_draft');
-            $this->load->view('admin/template/footer');
-        } elseif ($page == "new") {
+        }  elseif ($page == "new") {
             $this->load->view('admin/template/header');
             $this->load->view('admin/new_post');
             $this->load->view('admin/template/footer');
