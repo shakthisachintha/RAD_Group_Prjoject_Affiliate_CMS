@@ -88,4 +88,17 @@ class Customermodel extends CI_Model
             return $this->db->insert_id();
         }
     }
+        public function outboxform($Receiver_Email,$Subject,$reply){
+            $data=array(
+            
+                'email'=>$Receiver_Email,
+                'SAubject'=>$Subject,
+                'reply'=>$reply,
+                
+            );
+    
+            if($this->db->insert('mail_send',$data)){
+                return $this->db->insert_id();
+            }    
+    
 }

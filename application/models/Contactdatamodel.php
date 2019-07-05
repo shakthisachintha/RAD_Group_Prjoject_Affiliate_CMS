@@ -25,6 +25,12 @@ class Contactdatamodel extends CI_Model
         $query = $this->db->get('email_d');
         return $query;
     }
+    public function getMessage5() //email-outbox
+    {
+        $this->db->select('*');
+        $query = $this->db->get('reply');
+        return $query;
+    }
     public function delete($id)
     {
         $this->db->where('id', $id);

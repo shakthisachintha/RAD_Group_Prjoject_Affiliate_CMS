@@ -25,8 +25,8 @@
 		<button class="navbar-toggler" id="menu-toggle"><span id="menu-toggle" class="navbar-toggler-icon"></span></button>
 
 	
-		<h4 class="align-bottom text-success mx-auto">E-Money Dream Admin Panel</h4>
-
+		<!-- <h4 class="align-bottom text-success mx-auto">E-Money Dream Admin Panel</h4> -->
+ 
 	</nav>
 
 	<div id="main_content" class="container-fluid">
@@ -34,9 +34,37 @@
 
 <!-- content goes here -->
 	
-
-
+<div class="mt-4" id="data_table">
+			
+			<div class="table-dark text-warning table-hover table-responsive-md">
+				<table class="table">
+					<thead class="thead-light">
+						<tr>
+							<th>Receiver_Email</th>
+							<th>Subject</th>
+							<th>reply</th>
+							
+							
+						</tr>
+					</thead>
+					<tbody>
+					<?php foreach($query->result() as $result): ?>
+						
+						<tr>
+							
+							
+							<td><?=$result->Receiver_Email;?></td>
+							<td><?=$result->Subject;?></td>
+							<td><?=$result->reply;?></td>
+							
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+</div>
+ 
 
 	</div>
 </div>
+<!-- /#page-content-wrapper -->
+
 <!-- /#page-content-wrapper -->

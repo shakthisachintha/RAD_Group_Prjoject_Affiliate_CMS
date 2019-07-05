@@ -8,7 +8,9 @@
 			$array=$this->db->get('email_d');
 			return $array->result(); 
 		}
-		 
+		function getPosts(){
+			$query = $this->db->get('reply');
+			return $query->result(); }
 		 
       
 	}

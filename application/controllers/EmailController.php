@@ -15,7 +15,7 @@ class EmailController extends CI_Controller {
         
        
         $data['email_d']=$this->emodel->get_details();
-      
+        $data['posts'] = $this->emodel->getPosts();
     }
         public function savedata(){
 

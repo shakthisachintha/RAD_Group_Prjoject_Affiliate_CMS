@@ -36,8 +36,13 @@ class Admin extends CI_Controller
             $this->load->view('admin/mail_send', $data);
             $this->load->view('admin/template/footer');
         } elseif ($page == "mail_outbox") {
+            $this->load->model('contactdatamodel', 'outboxform', TRUE);
+            $messages = $this->outboxform->getMessage5();
+            $data = array(
+                "query" => $messages
+            );
             $this->load->view('admin/template/header');
-            $this->load->view('admin/mail_outbox');
+            $this->load->view('admin/mail_outbox',$data);
             $this->load->view('admin/template/footer');
         } elseif ($page == "mail_draft") {
             $this->load->view('admin/template/header');
